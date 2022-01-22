@@ -47,16 +47,27 @@ public class MapGenerator : MonoBehaviour
 
     void CreateNewShape(Vector3 pPos, Vector3 ePos, Vector3[] prevVertices)
     {
-        Vector3 roundePos = new Vector3(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y)-1, Mathf.RoundToInt(ePos.z));
+        Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y) - 1, Mathf.RoundToInt(ePos.z));
 
         for (var i = 0; i < prevVertices.Length; i++)
         {
             if (prevVertices[i] == roundePos)
             {
-                prevVertices[i].y++;
+                for (int u = roundePos.x - 3; u < roundePos.x + 3; u++)
+                {
+                    for (int v = roundePos.z - 3; v < roundePos.z + 3; v++)
+                    {
+                        for (var j = 0; j < prevVertices.Length; j++)
+                        {
+                            if (prevVertices[j] == new Vector3(u, roundePos.y, v))
+                            {
+                                prevVertices[j].y++;
+                            }
+                        }
+                    }
+                }
             }
         }
-
 
 
         triangles = new int[xSize * zSize * 6];
