@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 4190955791512926966}
   - component: {fileID: 601192529242639950}
   - component: {fileID: 7999892636887377833}
+  - component: {fileID: 1359246849}
   m_Layer: 10
   m_Name: P_LPSP_FP_CH
   m_TagString: Player
@@ -907,7 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClipWalking: {fileID: 8300000, guid: 74abbbf1b1724e34b894191db38e10a0, type: 3}
   audioClipRunning: {fileID: 8300000, guid: d2add02f58e61e640aba3ae9110591cb, type: 3}
-  speedWalking: 4
+  speedWalking: 6
   speedRunning: 6.8
 --- !u!114 &434113066
 MonoBehaviour:
@@ -1299,7 +1300,20 @@ MonoBehaviour:
   - {fileID: 8606110557139525}
   - {fileID: 4167758453430405102}
   hint: {fileID: 0}
-  weightHint: 0
+  weightHint: 1
+--- !u!114 &1359246849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751027687307977091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df18dcad9c2d6804195c8e70838e5941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 10
 --- !u!1 &2906013363015915789
 GameObject:
   m_ObjectHideFlags: 0
