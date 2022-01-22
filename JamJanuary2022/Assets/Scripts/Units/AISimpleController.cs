@@ -24,6 +24,7 @@ public class AISimpleController : Unit
     {
         state[AIStates.PROXIMITY] = new IProximity(this);
         state[AIStates.DIE] = new IDie(this);
+        state[AIStates.SHOOT] = new IShoot(this);
 
         stateMachine.ChangeState(state[AIStates.PROXIMITY]);
     }

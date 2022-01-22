@@ -23,15 +23,15 @@ public class IShoot : IState
 
     public void Enter()
     {
-        
+        Debug.Log("Pew Pew");
     }
 
     public void Execute()
     {
-        if(bullets > 0 && currentTimer <= 0)
+        /*if(bullets > 0 && currentTimer <= 0)
         {
             
-        }
+        }*/
     }
 
     public void Exit()
