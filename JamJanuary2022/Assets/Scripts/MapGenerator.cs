@@ -52,7 +52,7 @@ public class MapGenerator : MonoBehaviour
             for (int x = 0; x <= xSize; x++)
             {
                 float y = oldVerts[i].y;
-                if (new Vector3(x,ePos.y,z) == ePos)
+                if (new Vector3(x,ePos.y,z) == new Vector3(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y), Mathf.RoundToInt(ePos.z)))
                 {
                     y ++;
                 }
