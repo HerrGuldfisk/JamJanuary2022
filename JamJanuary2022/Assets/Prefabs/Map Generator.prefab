@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5280507536949821437}
   - component: {fileID: 5280507536949821424}
   - component: {fileID: 5280507536949821436}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Map Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,8 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2758a2678d81354189829957bd2efa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 100
-  zSize: 100
+  players: []
 --- !u!64 &5280507536949821436
 MeshCollider:
   m_ObjectHideFlags: 0
