@@ -51,13 +51,16 @@ public class MapGenerator : MonoBehaviour
         Vector3Int roundpPos = new Vector3Int(Mathf.RoundToInt(pPos.x), Mathf.RoundToInt(pPos.y), Mathf.RoundToInt(pPos.z));
         Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y) - 1, Mathf.RoundToInt(ePos.z));
 
+        float dist = Vector3.Distance(ePos, pPos);
+        int raiseArea = Mathf.RoundToInt(dist/10);
+
         for (var i = 0; i < prevVertices.Length; i++)
         {
             if (prevVertices[i] == roundePos)
             {
-                for (int u = roundePos.x - 3; u < roundePos.x + 3; u++)
+                for (int u = roundePos.x - raiseArea; u < roundePos.x + raiseArea; u++)
                 {
-                    for (int v = roundePos.z - 3; v < roundePos.z + 3; v++)
+                    for (int v = roundePos.z - raiseArea; v < roundePos.z + raiseArea; v++)
                     {
                         for (var j = 0; j < prevVertices.Length; j++)
                         {
