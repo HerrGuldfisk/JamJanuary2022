@@ -16,7 +16,15 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 GenerateSpawnPoint()
     {
-        Vector3 spawnPoint = new Vector3(Random.RandomRange(0, xSize), , Random.RandomRange(0, zSize));
+        Vector3 spawnPoint = Vector3.zero;
+        Vector3 randomPoint = new Vector3(Random.Range(0, xSize), -100, Random.Range(0, zSize));
+        RaycastHit hit;
+
+        if (Physics.Raycast(randomPoint, Vector3.up, out hit, Mathf.Infinity))
+        {
+            randomPoint.y = hit.transform.position.y + 1;
+            spawnPoint = randomPoint;
+        }
 
         return spawnPoint;
     }
