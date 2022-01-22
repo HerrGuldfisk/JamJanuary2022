@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine
 {
     public IState currentState;
     public IState previousState;
@@ -17,6 +17,14 @@ public class StateMachine : MonoBehaviour
         previousState = currentState;
         currentState = newState;
         currentState.Enter();
+    }
+
+    public void ExecuteState()
+    {
+        if(currentState != null)
+        {
+            currentState.Execute();
+        }
     }
 
     public void PreviousState()
