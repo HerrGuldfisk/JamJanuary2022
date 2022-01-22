@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject enemyPrefab;
 
-    public int maxEnemies = 100;
+    private int maxEnemies = 40;
 
     private void Start()
     {
