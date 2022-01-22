@@ -23,8 +23,9 @@ public class MapGenerator : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        if (players == null)
+        if (players != null)
         {
+            Debug.Log(players);
             players = GameObject.FindGameObjectsWithTag("Player");
         }
 
@@ -47,6 +48,7 @@ public class MapGenerator : MonoBehaviour
 
     void CreateNewShape(Vector3 pPos, Vector3 ePos, Vector3[] prevVertices)
     {
+        Vector3Int roundpPos = new Vector3Int(Mathf.RoundToInt(pPos.x), Mathf.RoundToInt(pPos.y), Mathf.RoundToInt(pPos.z));
         Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y) - 1, Mathf.RoundToInt(ePos.z));
 
         for (var i = 0; i < prevVertices.Length; i++)
@@ -61,7 +63,14 @@ public class MapGenerator : MonoBehaviour
                         {
                             if (prevVertices[j] == new Vector3(u, roundePos.y, v))
                             {
-                                prevVertices[j].y++;
+                                if (roundpPos != new Vector3(u, roundePos.y, v))
+                                {
+                                    Debug.Log("Player pos: " + roundpPos + " " + "Enemy pos: " + new Vector3(u, roundePos.y, v));
+                                    prevVertices[j].y++;
+                                }
+                                else {
+                                    Debug.Log("Player is here!");
+                                }
                             }
                         }
                     }
