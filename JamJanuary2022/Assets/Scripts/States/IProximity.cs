@@ -25,8 +25,8 @@ public class IProximity : IState
         // Check to ease the cpu usage
         if(Time.time < loggedTime + checkCD) { return; }
 
-        loggedTime += Time.time;
-        Collider[] colliders = Physics.OverlapSphere(owner.transform.position, 12f, 10);
+        loggedTime = Time.time;
+        Collider[] colliders = Physics.OverlapSphere(owner.transform.position, 8f);
 
         if(colliders.Length == 0) { return; }
 

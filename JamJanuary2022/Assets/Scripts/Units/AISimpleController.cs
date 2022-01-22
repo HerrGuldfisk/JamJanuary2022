@@ -24,6 +24,7 @@ public class AISimpleController : Unit
     {
         state[AIStates.PROXIMITY] = new IProximity(this);
         state[AIStates.DIE] = new IDie(this);
+        state[AIStates.SHOOT] = new IShoot(this);
 
         stateMachine.ChangeState(state[AIStates.PROXIMITY]);
     }
@@ -31,7 +32,10 @@ public class AISimpleController : Unit
     // Update is called once per frame
     void Update()
     {
-        
+        if(stateMachine.currentState != null)
+        {
+            stateMachine.ExecuteState();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
