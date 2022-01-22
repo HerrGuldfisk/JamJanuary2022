@@ -53,6 +53,7 @@ public class MapGenerator : MonoBehaviour
 
         float dist = Vector3.Distance(ePos, pPos);
         int raiseArea = Mathf.RoundToInt(dist/10);
+        int raiseHeight = Mathf.RoundToInt(dist / 10);
 
         for (var i = 0; i < prevVertices.Length; i++)
         {
@@ -69,7 +70,7 @@ public class MapGenerator : MonoBehaviour
                                 if (roundpPos != new Vector3(u, roundePos.y, v))
                                 {
                                     Debug.Log("Player pos: " + roundpPos + " " + "Enemy pos: " + new Vector3(u, roundePos.y, v));
-                                    prevVertices[j].y++;
+                                    prevVertices[j].y += raiseHeight;
                                 }
                                 else {
                                     Debug.Log("Player is here!");
