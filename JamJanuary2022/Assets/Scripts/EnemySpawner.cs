@@ -27,11 +27,10 @@ public class EnemySpawner : MonoBehaviour
 
         Vector3 spawnPoint = Vector3.zero;
 
-        Vector3 randomPoint = new Vector3(randomX, -10, randomZ);
-        Debug.Log(randomPoint);
+        Vector3 randomPoint = new Vector3(randomX, 10000, randomZ);
         RaycastHit hit;
 
-        if (Physics.Raycast(randomPoint, new Vector3(randomPoint.x, 1, randomPoint.z), out hit, Mathf.Infinity))
+        if (Physics.Raycast(randomPoint, Vector3.down, out hit, Mathf.Infinity))
         {
             randomPoint.y = hit.transform.position.y + 10;
             spawnPoint = randomPoint;
