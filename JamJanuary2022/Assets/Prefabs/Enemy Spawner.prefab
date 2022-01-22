@@ -47,4 +47,5 @@ MonoBehaviour:
   zSize: 100
   enemyPrefab: {fileID: 5563933478908809845, guid: b04a62d8b657d4027aff08add885ce6c,
     type: 3}
-  maxEnemies: 100
+  startDelay: 4
+  delayPercShorteningPerSecond: 2

@@ -14,10 +14,15 @@ public class EnemySpawner : MonoBehaviour
 
     private int maxEnemies = 10;
     private int currentEnemies = 0;
+    float delay;
+    [SerializeField] float startDelay = 4;
+    [SerializeField] float delayPercShorteningPerSecond = 1f;
 
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
+        StartCoroutine(DecreaseSpawnDelay());
+        delay = startDelay;
     }
 
     private Vector3 GenerateSpawnPoint()
@@ -54,7 +59,14 @@ public class EnemySpawner : MonoBehaviour
         while(currentEnemies < maxEnemies)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+    IEnumerator DecreaseSpawnDelay(){
+        while(true){
+            delay -= delay*delayPercShorteningPerSecond/100;
+            yield return new WaitForSeconds(1);
         }
     }
 }
