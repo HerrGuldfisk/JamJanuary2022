@@ -20,7 +20,12 @@ public class IChase : IState
 
     public void Execute()
     {
-        owner.character.Move((PlayerPosition.position - owner.transform.position).normalized * Time.deltaTime * unitSpeed);
+        if(PlayerPosition.position != null)
+        {
+            Debug.Log($"Moving AI In IChase towards pos: {PlayerPosition.position}");
+            owner.character.Move((PlayerPosition.position - owner.transform.position).normalized * Time.deltaTime * unitSpeed);
+        }
+        
     }
 
     public void Exit()

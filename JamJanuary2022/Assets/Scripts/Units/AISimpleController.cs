@@ -45,6 +45,7 @@ public class AISimpleController : Unit
 
         if (Physics.Raycast(downRay, out hit, 10f))
         {
+            Debug.Log("Ground is below");
             if(hit.distance > 0.1f)
             {
                 character.Move(new Vector3(0, -9.82f, 0) * Time.deltaTime);
@@ -56,6 +57,7 @@ public class AISimpleController : Unit
 
             if (Physics.Raycast(upRay, out hit, 10f))
             {
+                Debug.Log("Ground is above");
                 character.Move(new Vector3(0, hit.distance, 0));
             }
         }
