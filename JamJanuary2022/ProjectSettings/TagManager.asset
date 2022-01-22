@@ -17,6 +17,7 @@ TagManager:
   - Dirt (Static)
   - Wood
   - Bullet
+  - Terrain
   layers:
   - Default
   - TransparentFX
