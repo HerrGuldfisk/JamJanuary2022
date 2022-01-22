@@ -18,6 +18,7 @@ TagManager:
   - Wood
   - Bullet
   - Ground
+  - Terrain
   layers:
   - Default
   - TransparentFX

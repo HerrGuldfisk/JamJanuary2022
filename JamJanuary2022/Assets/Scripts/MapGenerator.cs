@@ -12,8 +12,8 @@ public class MapGenerator : MonoBehaviour
     Vector3[] vertices;
     int[] triangles;
 
-    public int xSize = 1000;
-    public int zSize = 1000;
+    public static int xSize = 1000;
+    public static int zSize = 1000;
 
     public GameObject[] players;
 
@@ -30,6 +30,11 @@ public class MapGenerator : MonoBehaviour
         }
 
         CreateInitShape();
+        //UpdateMesh();
+    }
+
+    private void Update()
+    {
         UpdateMesh();
     }
 
@@ -43,7 +48,8 @@ public class MapGenerator : MonoBehaviour
         }
 
         CreateNewShape(playerPos, enemyPos, vertices);
-        UpdateMesh();
+        //StartCoroutine(CreateNewShapeEnum(playerPos, enemyPos, vertices, triangles));
+        //UpdateMesh();
     }
 
     void CreateNewShape(Vector3 pPos, Vector3 ePos, Vector3[] prevVertices)
@@ -53,7 +59,7 @@ public class MapGenerator : MonoBehaviour
 
         float dist = Vector3.Distance(ePos, pPos);
         int raiseArea = Mathf.RoundToInt(dist/10);
-        int raiseHeight = Mathf.RoundToInt(dist / 10);
+        int raiseHeight = Mathf.RoundToInt(dist/10);
 
         for (var i = 0; i < prevVertices.Length; i++)
         {
@@ -101,6 +107,90 @@ public class MapGenerator : MonoBehaviour
 
                 vert++;
                 tris += 6;
+            }
+            vert++;
+        }
+    }
+
+    IEnumerator CreateNewShapeEnum(Vector3 pPos, Vector3 ePos, Vector3[] prevVertices, int[] prevTriangles)
+    {
+        Vector3Int roundpPos = new Vector3Int(Mathf.RoundToInt(pPos.x), Mathf.RoundToInt(pPos.y), Mathf.RoundToInt(pPos.z));
+        Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y) - 1, Mathf.RoundToInt(ePos.z));
+
+        float dist = Vector3.Distance(ePos, pPos);
+        int raiseArea = Mathf.RoundToInt(dist / 10);
+        int raiseHeight = Mathf.RoundToInt(dist / 10);
+
+        for (var i = 0; i < prevVertices.Length; i++)
+        {
+            if (prevVertices[i] == roundePos)
+            {
+                for (int u = roundePos.x - raiseArea; u < roundePos.x + raiseArea; u++)
+                {
+                    for (int v = roundePos.z - raiseArea; v < roundePos.z + raiseArea; v++)
+                    {
+                        for (var j = 0; j < prevVertices.Length; j++)
+                        {
+                            if (prevVertices[j] == new Vector3(u, roundePos.y, v))
+                            {
+                                if (roundpPos != new Vector3(u, roundePos.y, v))
+                                {
+                                    Debug.Log("Player pos: " + roundpPos + " " + "Enemy pos: " + new Vector3(u, roundePos.y, v));
+                                    prevVertices[j].y += raiseHeight;
+                                }
+                                else
+                                {
+                                    Debug.Log("Player is here!");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        //triangles = new int[xSize * zSize * 6];
+        triangles = prevTriangles;
+
+        int vert = 0;
+        int tris = 0;
+
+        /*
+        for (int z = 0; z < zSize; z++)
+        {
+            for (int x = 0; x < xSize; x++)
+            {
+                triangles[tris + 0] = vert + 0;
+                triangles[tris + 1] = vert + xSize + 1;
+                triangles[tris + 2] = vert + 1;
+                triangles[tris + 3] = vert + 1;
+                triangles[tris + 4] = vert + xSize + 1;
+                triangles[tris + 5] = vert + xSize + 2;
+
+                vert++;
+                tris += 6;
+
+                yield return new WaitForSeconds(0.00001f);
+            }
+            vert++;
+        }*/
+
+        for (int z = roundePos.z - raiseArea; z < roundePos.z + raiseArea; z++)
+        {
+            for (int x = roundePos.x - raiseArea; x < roundePos.x + raiseArea; x++)
+            {
+                triangles[tris + 0] = vert + 0;
+                triangles[tris + 1] = vert + xSize + 1;
+                triangles[tris + 2] = vert + 1;
+                triangles[tris + 3] = vert + 1;
+                triangles[tris + 4] = vert + xSize + 1;
+                triangles[tris + 5] = vert + xSize + 2;
+
+                vert++;
+                tris += 6;
+
+                yield return new WaitForSeconds(0.1f);
             }
             vert++;
         }
