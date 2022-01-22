@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class AISimpleController : Unit
 {
-    StateMachine stateMachine = new StateMachine();
+    public StateMachine stateMachine = new StateMachine();
+    public Weapon weapon;
     public Animator anim;
 
-    Dictionary<AIStates, IState> state = new Dictionary<AIStates, IState>();
+    public Dictionary<AIStates, IState> state = new Dictionary<AIStates, IState>();
 
     public enum AIStates
     {
@@ -23,6 +24,8 @@ public class AISimpleController : Unit
     {
         state[AIStates.PROXIMITY] = new IProximity(this);
         state[AIStates.DIE] = new IDie(this);
+
+        stateMachine.ChangeState(state[AIStates.PROXIMITY]);
     }
 
     // Update is called once per frame
