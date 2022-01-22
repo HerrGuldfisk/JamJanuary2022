@@ -35,8 +35,8 @@ public class AISimpleController : Unit
     {
         if(collision.gameObject.tag == "Bullet")
         {
-            stateMachine.ChangeState(state[AIStates.DIE]);
             FindObjectOfType<MapGenerator>().OnKill(transform.position);
+            stateMachine.ChangeState(state[AIStates.DIE]);
         }
     }
 }
