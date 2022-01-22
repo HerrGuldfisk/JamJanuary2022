@@ -10,6 +10,7 @@ public class AISimpleController : Unit
     public CharacterController character;
 
     public bool onGround = false;
+    private LayerMask mask;
 
     public Dictionary<AIStates, IState> state = new Dictionary<AIStates, IState>();
 
@@ -27,8 +28,8 @@ public class AISimpleController : Unit
     void Start()
     {
         character = GetComponent<CharacterController>();
+        mask = LayerMask.GetMask("Ground");
 
-        
         state[AIStates.PROXIMITY] = new IProximity(this);
         state[AIStates.DIE] = new IDie(this);
         state[AIStates.SHOOT] = new IShoot(this);
@@ -44,7 +45,7 @@ public class AISimpleController : Unit
         RaycastHit hit;
         Ray downRay = new Ray(transform.position - new Vector3(0, -1, 0), Vector3.down);
 
-        if (Physics.Raycast(downRay, out hit))
+        if (Physics.Raycast(downRay, out hit, 10f, mask))
         {
             if(hit.distance > 0.1f)
             {
@@ -55,7 +56,7 @@ public class AISimpleController : Unit
         {
             Ray upRay = new Ray(transform.position - new Vector3(0, -1, 0), Vector3.up);
 
-            if (Physics.Raycast(upRay, out hit))
+            if (Physics.Raycast(upRay, out hit, 10f, mask))
             {
                 character.Move(new Vector3(0, hit.distance, 0));
             }
