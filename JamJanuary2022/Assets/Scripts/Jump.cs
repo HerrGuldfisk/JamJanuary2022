@@ -9,6 +9,7 @@ public class Jump : MonoBehaviour
     Vector3 newVel = Vector3.zero;
     Rigidbody rb;
     bool grounded = true;
+    //hej
 
     private void Start() {
         rb = GetComponent<Rigidbody>();

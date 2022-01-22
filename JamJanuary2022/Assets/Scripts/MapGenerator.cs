@@ -75,11 +75,11 @@ public class MapGenerator : MonoBehaviour
                             {
                                 if (roundpPos != new Vector3(u, roundePos.y, v))
                                 {
-                                    Debug.Log("Player pos: " + roundpPos + " " + "Enemy pos: " + new Vector3(u, roundePos.y, v));
+
                                     prevVertices[j].y += raiseHeight;
                                 }
                                 else {
-                                    Debug.Log("Player is here!");
+
                                 }
                             }
                         }
