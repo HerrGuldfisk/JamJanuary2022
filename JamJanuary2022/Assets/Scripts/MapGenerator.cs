@@ -59,11 +59,9 @@ public class MapGenerator : MonoBehaviour
         Vector3Int roundpPos = new Vector3Int(Mathf.RoundToInt(pPos.x), Mathf.RoundToInt(pPos.y), Mathf.RoundToInt(pPos.z));
         Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y), Mathf.RoundToInt(ePos.z));
 
-        ePos.y = roundePos.y;
-
         float dist = Vector3.Distance(ePos, pPos);
         int raiseArea = 1 + Mathf.RoundToInt(dist/10);
-        float raiseHeight = 1f + dist/4f;
+        float raiseHeight = 1f + dist/40f;
 
         for (var i = 0; i < prevVertices.Length; i++)
         {
@@ -75,22 +73,13 @@ public class MapGenerator : MonoBehaviour
                     {
                         for (var j = 0; j < prevVertices.Length; j++)
                         {
-                            /*if (prevVertices[j] == new Vector3(u, ePos.y, v))
-                            {
-                                if (roundpPos != new Vector3(u, ePos.y, v))
-                                {
-                                    prevVertices[j].y += raiseHeight;
-                                }
-                                else {
-                                    prevVertices[j].y += raiseHeight;
-                                }
-                            }*/
                             if (prevVertices[j] == new Vector3(u, prevVertices[j].y, v))
                             {
                                 prevVertices[j].y += raiseHeight;
                             }
                         }
                     }
+                    raiseHeight -= 0.6f;
                 }
             }
         }
