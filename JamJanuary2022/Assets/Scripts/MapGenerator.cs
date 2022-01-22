@@ -45,22 +45,19 @@ public class MapGenerator : MonoBehaviour
         UpdateMesh();
     }
 
-    void CreateNewShape(Vector3 pPos, Vector3 ePos, Vector3[] oldVerts)
+    void CreateNewShape(Vector3 pPos, Vector3 ePos, Vector3[] prevVertices)
     {
-        for (int i = 0, z = 0; z <= zSize; z++)
+        Vector3 roundePos = new Vector3(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y)-1, Mathf.RoundToInt(ePos.z));
+
+        for (var i = 0; i < prevVertices.Length; i++)
         {
-            for (int x = 0; x <= xSize; x++)
+            if (prevVertices[i] == roundePos)
             {
-                float y = oldVerts[i].y;
-                if (new Vector3(x,ePos.y,z) == new Vector3(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y), Mathf.RoundToInt(ePos.z)))
-                {
-                    y ++;
-                }
-                Debug.Log("Raise " + y);
-                vertices[i] = new Vector3(x, y, z);
-                i++;
+                prevVertices[i].y++;
             }
         }
+
+
 
         triangles = new int[xSize * zSize * 6];
 
