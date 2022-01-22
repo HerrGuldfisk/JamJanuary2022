@@ -26,13 +26,13 @@ public class Jump : MonoBehaviour
         rb.velocity = newVel;
     }
     private void OnCollisionEnter(Collision other) {
-        if (other.transform.tag == "Ground"){
+        if (other.transform.tag == "Terrain"){
             grounded=true;
         }
     }
 
     private void OnCollisionExit(Collision other) {
-        if (other.transform.tag == "Ground"){
+        if (other.transform.tag == "Terrain"){
             grounded=false;
         }
     }
