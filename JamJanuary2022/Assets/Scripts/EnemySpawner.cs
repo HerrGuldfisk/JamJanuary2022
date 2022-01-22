@@ -22,13 +22,18 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 GenerateSpawnPoint()
     {
         Vector3 spawnPoint = Vector3.zero;
-        Vector3 randomPoint = new Vector3(Random.Range(0 + xSize/10, xSize - xSize / 10), -100, Random.Range(0 + zSize / 10, zSize - zSize / 10));
+        Vector3 randomPoint = new Vector3(Random.Range(1, xSize-1), -10, Random.Range(1, zSize-1));
+        Debug.Log(randomPoint);
         RaycastHit hit;
 
-        if (Physics.Raycast(randomPoint, new Vector3(0,0,1), out hit, Mathf.Infinity))
+        if (Physics.Raycast(randomPoint, new Vector3(0, 0, 1), out hit, Mathf.Infinity))
         {
-            randomPoint.y = hit.transform.position.y + 1;
+            randomPoint.y = hit.transform.position.y + 2;
             spawnPoint = randomPoint;
+        }
+        else
+        {
+            spawnPoint = new Vector3(xSize / 2, 1, zSize / 2);
         }
 
         return spawnPoint;
