@@ -6,6 +6,11 @@ public class PlayerPosition : MonoBehaviour
 {
     public static Vector3 position;
 
+    private void Awake()
+    {
+        position = transform.position;
+    }
+
     void FixedUpdate()
     {
         position = transform.position;
