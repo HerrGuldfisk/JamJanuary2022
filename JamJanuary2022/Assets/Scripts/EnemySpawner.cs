@@ -13,14 +13,11 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
 
     private int maxEnemies = 10;
+    private int currentEnemies = 0;
 
     private void Start()
     {
-        for (int i = 0; i < maxEnemies; i++)
-        {
-            //StartCoroutine(SpawnEnemies());
-            SpawnEnemy();
-        }
+        StartCoroutine(SpawnEnemies());
     }
 
     private Vector3 GenerateSpawnPoint()
@@ -34,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log(randomPoint);
         RaycastHit hit;
 
-        if (Physics.Raycast(randomPoint, new Vector3(randomPoint.x, 1, randomPoint.y), out hit, Mathf.Infinity))
+        if (Physics.Raycast(randomPoint, new Vector3(randomPoint.x, 1, randomPoint.z), out hit, Mathf.Infinity))
         {
             randomPoint.y = hit.transform.position.y + 10;
             spawnPoint = randomPoint;
@@ -55,7 +52,10 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        SpawnEnemy();
-        yield return new WaitForSeconds(0.5f);
+        while(currentEnemies < maxEnemies)
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }
