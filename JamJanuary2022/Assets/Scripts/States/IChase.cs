@@ -6,7 +6,7 @@ public class IChase : IState
 {
     AISimpleController owner;
 
-    float unitSpeed = 2f;
+    float unitSpeed = 8f;
 
     public IChase(AISimpleController owner)
     {
