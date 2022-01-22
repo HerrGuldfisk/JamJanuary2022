@@ -41,25 +41,23 @@ public class MapGenerator : MonoBehaviour
             playerPos = player.transform.position;
         }
 
-        CreateNewShape(playerPos, enemyPos);
+        CreateNewShape(playerPos, enemyPos, vertices);
         UpdateMesh();
     }
 
-    void CreateNewShape(Vector3 pPos, Vector3 ePos)
+    void CreateNewShape(Vector3 pPos, Vector3 ePos, Vector3[] oldVerts)
     {
-        vertices = new Vector3[(xSize + 1) * (zSize + 1)];
-
         for (int i = 0, z = 0; z <= zSize; z++)
         {
             for (int x = 0; x <= xSize; x++)
             {
-                float y = 0;
+                float y = oldVerts[i].y;
                 if (new Vector3(x,ePos.y,z) == ePos)
                 {
-                    y = 1;
+                    y ++;
                 }
                 Debug.Log("Raise " + y);
-                vertices[i] = new Vector3(x, y, z);
+                oldVerts[i] = new Vector3(x, y, z);
                 i++;
             }
         }
