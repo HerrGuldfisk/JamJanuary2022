@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class MapGenerator : MonoBehaviour
 {
+    [SerializeField] GameObject soundPopPrefab;
 
     Mesh mesh;
 
@@ -50,6 +51,7 @@ public class MapGenerator : MonoBehaviour
         CreateNewShape(playerPos, enemyPos, vertices);
         //StartCoroutine(CreateNewShapeEnum(playerPos, enemyPos, vertices, triangles));
         //UpdateMesh();
+        GameObject.Instantiate(soundPopPrefab, enemyPos, Quaternion.identity);
     }
 
     void CreateNewShape(Vector3 pPos, Vector3 ePos, Vector3[] prevVertices)
