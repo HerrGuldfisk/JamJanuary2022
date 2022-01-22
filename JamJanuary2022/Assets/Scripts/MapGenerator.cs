@@ -12,8 +12,8 @@ public class MapGenerator : MonoBehaviour
     Vector3[] vertices;
     int[] triangles;
 
-    public static int xSize = 1000;
-    public static int zSize = 1000;
+    public static int xSize = 100;
+    public static int zSize = 100;
 
     public GameObject[] players;
 
