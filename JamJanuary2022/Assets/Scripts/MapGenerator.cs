@@ -57,15 +57,17 @@ public class MapGenerator : MonoBehaviour
     void CreateNewShape(Vector3 pPos, Vector3 ePos, Vector3[] prevVertices)
     {
         Vector3Int roundpPos = new Vector3Int(Mathf.RoundToInt(pPos.x), Mathf.RoundToInt(pPos.y), Mathf.RoundToInt(pPos.z));
-        Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y) - 1, Mathf.RoundToInt(ePos.z));
+        Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y), Mathf.RoundToInt(ePos.z));
+
+        ePos.y = roundePos.y;
 
         float dist = Vector3.Distance(ePos, pPos);
-        int raiseArea = Mathf.RoundToInt(dist/10);
-        int raiseHeight = Mathf.RoundToInt(dist/10);
+        int raiseArea = 1 + Mathf.RoundToInt(dist/10);
+        float raiseHeight = 1f + dist/4f;
 
         for (var i = 0; i < prevVertices.Length; i++)
         {
-            if (prevVertices[i] == roundePos)
+            if (prevVertices[i] == new Vector3(roundePos.x, prevVertices[i].y, roundePos.y))
             {
                 for (int u = roundePos.x - raiseArea; u < roundePos.x + raiseArea; u++)
                 {
@@ -73,16 +75,19 @@ public class MapGenerator : MonoBehaviour
                     {
                         for (var j = 0; j < prevVertices.Length; j++)
                         {
-                            if (prevVertices[j] == new Vector3(u, roundePos.y, v))
+                            /*if (prevVertices[j] == new Vector3(u, ePos.y, v))
                             {
-                                if (roundpPos != new Vector3(u, roundePos.y, v))
+                                if (roundpPos != new Vector3(u, ePos.y, v))
                                 {
-
                                     prevVertices[j].y += raiseHeight;
                                 }
                                 else {
-
+                                    prevVertices[j].y += raiseHeight;
                                 }
+                            }*/
+                            if (prevVertices[j] == new Vector3(u, prevVertices[j].y, v))
+                            {
+                                prevVertices[j].y += raiseHeight;
                             }
                         }
                     }
@@ -206,8 +211,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                //float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
-                float y = 0f;
+                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }

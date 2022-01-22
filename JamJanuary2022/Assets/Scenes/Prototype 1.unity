@@ -438,6 +438,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3255455847916270878, guid: 12d9528f333f51442aca163b299a0138,
         type: 3}
+      propertyPath: xSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255455847916270878, guid: 12d9528f333f51442aca163b299a0138,
+        type: 3}
+      propertyPath: zSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255455847916270878, guid: 12d9528f333f51442aca163b299a0138,
+        type: 3}
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 5563933478908809845, guid: b04a62d8b657d4027aff08add885ce6c,
