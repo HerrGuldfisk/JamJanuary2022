@@ -53,7 +53,12 @@ public class MapGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
+                float y = 0;
+                if (x == ePos.x && z == ePos.z)
+                {
+                    y = 1;
+                }
+
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }
@@ -90,7 +95,8 @@ public class MapGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
+                //float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
+                float y = 0f;
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }
