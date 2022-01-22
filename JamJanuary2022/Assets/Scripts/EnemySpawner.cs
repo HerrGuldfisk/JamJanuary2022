@@ -7,6 +7,9 @@ public class EnemySpawner : MonoBehaviour
     public int xSize = MapGenerator.xSize;
     public int zSize = MapGenerator.zSize;
 
+    int randomX;
+    int randomZ;
+
     public GameObject enemyPrefab;
 
     private int maxEnemies = 40;
@@ -21,15 +24,20 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 GenerateSpawnPoint()
     {
+        randomX = Random.Range(0, xSize);
+        randomZ = Random.Range(0, zSize);
+
         Vector3 spawnPoint = Vector3.zero;
-        Vector3 randomPoint = new Vector3(Random.Range(1, xSize-1), -10, Random.Range(1, zSize-1));
+
+        Vector3 randomPoint = new Vector3(randomX, -10, randomZ);
         Debug.Log(randomPoint);
         RaycastHit hit;
 
-        if (Physics.Raycast(randomPoint, new Vector3(0, 0, 1), out hit, Mathf.Infinity))
+        if (Physics.Raycast(randomPoint, new Vector3(randomPoint.x, 1, randomPoint.y), out hit, Mathf.Infinity))
         {
             randomPoint.y = hit.transform.position.y + 2;
             spawnPoint = randomPoint;
+            Debug.Log(spawnPoint);
         }
         else
         {
