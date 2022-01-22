@@ -32,7 +32,10 @@ public class AISimpleController : Unit
     // Update is called once per frame
     void Update()
     {
-        
+        if(stateMachine.currentState != null)
+        {
+            stateMachine.ExecuteState();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
