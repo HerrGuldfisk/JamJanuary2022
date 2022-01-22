@@ -54,7 +54,7 @@ public class MapGenerator : MonoBehaviour
             for (int x = 0; x <= xSize; x++)
             {
                 float y = 0;
-                if (x == ePos.x && z == ePos.z)
+                if (new Vector3(x,ePos.y,z) == ePos)
                 {
                     y = 1;
                 }
