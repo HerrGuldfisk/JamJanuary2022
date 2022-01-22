@@ -43,7 +43,7 @@ public class AISimpleController : Unit
         RaycastHit hit;
         Ray downRay = new Ray(transform.position - new Vector3(0, -1, 0), Vector3.down);
 
-        if (Physics.Raycast(downRay, out hit, 10f))
+        if (Physics.Raycast(downRay, out hit, 50f))
         {
             Debug.Log("Ground is below");
             if(hit.distance > 0.1f)
@@ -55,7 +55,7 @@ public class AISimpleController : Unit
         {
             Ray upRay = new Ray(transform.position - new Vector3(0, -1, 0), Vector3.up);
 
-            if (Physics.Raycast(upRay, out hit, 10f))
+            if (Physics.Raycast(upRay, out hit, 50f))
             {
                 Debug.Log("Ground is above");
                 character.Move(new Vector3(0, hit.distance, 0));
