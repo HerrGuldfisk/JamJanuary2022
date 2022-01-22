@@ -30,7 +30,7 @@ public class Jump : MonoBehaviour
         }
 
         Keyboard keyboard = Keyboard.current;
-        if(keyboard.spaceKey.IsActuated() && distanceToGround < 0.5){
+        if(keyboard.spaceKey.wasPressedThisFrame && distanceToGround < 0.5){
             newVel.y = jumpHeight;
         }
 

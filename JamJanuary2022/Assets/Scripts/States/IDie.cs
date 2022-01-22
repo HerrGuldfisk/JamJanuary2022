@@ -13,6 +13,7 @@ public class IDie : IState
 
     public void Enter()
     {
+        GameObject.FindObjectOfType<ScoreSystem>().Add(10);
         owner.DestroyUnit();
     }
 
