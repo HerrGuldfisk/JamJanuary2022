@@ -9,7 +9,6 @@ public class Jump : MonoBehaviour
     Vector3 newVel = Vector3.zero;
     Rigidbody rb;
     bool grounded = true;
-    //hej
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
@@ -19,22 +18,22 @@ public class Jump : MonoBehaviour
     {
         newVel = rb.velocity;
 
+        float distanceToGround = 0;
+        int layerMask = 1 << 8;
+        layerMask = ~layerMask;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask))
+        {
+            if (hit.transform.CompareTag("Terrain")){
+                distanceToGround = Vector3.Distance(transform.position, hit.point);
+            }
+        }
+
         Keyboard keyboard = Keyboard.current;
-        if(keyboard.spaceKey.IsActuated() && grounded){
+        if(keyboard.spaceKey.IsActuated() && distanceToGround < 0.5){
             newVel.y = jumpHeight;
         }
 
         rb.velocity = newVel;
-    }
-    private void OnCollisionEnter(Collision other) {
-        if (other.transform.tag == "Terrain"){
-            grounded=true;
-        }
-    }
-
-    private void OnCollisionExit(Collision other) {
-        if (other.transform.tag == "Terrain"){
-            grounded=false;
-        }
     }
 }
