@@ -58,7 +58,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     y = 1;
                 }
-
+                Debug.Log("Raise " + y);
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }
