@@ -35,7 +35,7 @@ public class IShoot : IState
 
             if (Physics.Raycast(forwardRay, out hit, 50f))
             {
-                GameObject tempBullet = weapon.SpawnBullet();
+                //GameObject tempBullet = weapon.SpawnBullet();
             }
         }
     }
