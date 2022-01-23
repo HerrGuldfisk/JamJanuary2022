@@ -16,3 +16,4 @@ public class PlayerPosition : MonoBehaviour
         position = transform.position;
     }
 }
+

@@ -6,7 +6,7 @@ public class IChase : IState
 {
     AISimpleController owner;
 
-    float unitSpeed = 8f;
+    float unitSpeed = 3f;
 
     public IChase(AISimpleController owner)
     {
@@ -22,8 +22,13 @@ public class IChase : IState
     {
         if(PlayerPosition.position != null)
         {
-            Debug.Log($"Moving AI In IChase towards pos: {PlayerPosition.position}");
             owner.character.Move((PlayerPosition.position - owner.transform.position).normalized * Time.deltaTime * unitSpeed);
+            owner.transform.LookAt(PlayerPosition.position);
+        }
+
+        if(Vector3.Distance(owner.transform.position, PlayerPosition.position) < 10f)
+        {
+            owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.SHOOT]);
         }
         
     }
