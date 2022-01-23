@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     [SerializeField] GameObject deathSFXPopPrefab;
     [SerializeField] List<Component> componentsToTurnOffOnDeath;
     [SerializeField] List<GameObject> objectsToTurnOffOnDeath;
+    [SerializeField] Text finalScoreText;
     
     int currentHealth;
     bool recentlyDamaged = false;
@@ -59,6 +60,7 @@ public class Health : MonoBehaviour
     void Die(){
         deathScreen.alpha = 1;
         dmgImage.alpha = 0;
+        finalScoreText.text = GameObject.FindObjectOfType<ScoreSystem>().currentScore.ToString() + " BEES KILLED";
         Instantiate(deathSFXPopPrefab);
 
         foreach(Component comp in componentsToTurnOffOnDeath){

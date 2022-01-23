@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreSystem : MonoBehaviour
 {
-    int currentScore = 0;
+    public int currentScore = 0;
     Text scoreText;
 
     private void Start() {
@@ -14,6 +14,7 @@ public class ScoreSystem : MonoBehaviour
 
     public void Add(int points){
         currentScore += points;
+        UpdateText();
     }
 
     void UpdateText(){

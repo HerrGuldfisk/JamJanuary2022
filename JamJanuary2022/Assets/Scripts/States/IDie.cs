@@ -17,7 +17,7 @@ public class IDie : IState
     {
         GameObject.Instantiate(sfxPop, owner.transform.position, Quaternion.identity);
         GameObject.Instantiate(vfxPop, owner.transform.position, Quaternion.identity);
-        GameObject.FindObjectOfType<ScoreSystem>().Add(10);
+        GameObject.FindObjectOfType<ScoreSystem>().Add(1);   
         owner.DestroyUnit();
     }
 

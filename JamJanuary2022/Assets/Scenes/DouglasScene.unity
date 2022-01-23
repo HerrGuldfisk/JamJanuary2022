@@ -268,6 +268,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1105858553128437111, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
+      propertyPath: finalScoreText
+      value: 
+      objectReference: {fileID: 968232695}
+    - target: {fileID: 1105858553128437111, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
+        type: 3}
       propertyPath: componentsToTurnOffOnDeath.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -756,6 +761,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2bd74ba84b94cd4bbb9b189a5e89fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &968232695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5606842916650509788, guid: 804314269bb1bd34a9980e9271b8f08b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5606842916976168008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &988333639 stripped
