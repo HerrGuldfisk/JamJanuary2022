@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5029291066612024065
+--- !u!1001 &988260706179516573
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 647709185084313634, guid: 08e38bb6cd4db6d4bbaca7c0cd0c90e0,
         type: 3}
       propertyPath: m_Name
-      value: SFXpop - Player DMG
+      value: SFXpop - BugSplat
       objectReference: {fileID: 0}
     - target: {fileID: 647709185084313644, guid: 08e38bb6cd4db6d4bbaca7c0cd0c90e0,
         type: 3}
@@ -69,13 +69,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 647709185084313645, guid: 08e38bb6cd4db6d4bbaca7c0cd0c90e0,
         type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 647709185084313645, guid: 08e38bb6cd4db6d4bbaca7c0cd0c90e0,
+        type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 2721fe054bed0b54a9a2cc6ea4618f4d, type: 3}
+      objectReference: {fileID: 8300000, guid: a32fb29a3c8756041ac40387596666eb, type: 3}
     - target: {fileID: 8588469679798851425, guid: 08e38bb6cd4db6d4bbaca7c0cd0c90e0,
         type: 3}
       propertyPath: pitchDivergence
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08e38bb6cd4db6d4bbaca7c0cd0c90e0, type: 3}

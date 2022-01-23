@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5236659672983489283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2977666470506659445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0530c62c02fd3b4f85916261ebd5ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToRotateFrom: Player
+  extraRotation: {x: 0, y: 90, z: 0}
 --- !u!1001 &2427418151417720407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,6 +198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7105626062597683626, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
         type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105626062597683626, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
+        type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.1
       objectReference: {fileID: 0}
@@ -290,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 7105626062597683626, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
         type: 3}
       propertyPath: InitialModule.startRotation.scalar
-      value: 0.87266463
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7105626062597683626, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
         type: 3}
@@ -301,6 +320,11 @@ PrefabInstance:
         type: 3}
       propertyPath: CollisionModule.m_Planes.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105626062597683626, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
+        type: 3}
+      propertyPath: InitialModule.startRotationY.scalar
+      value: 3.1415925
       objectReference: {fileID: 0}
     - target: {fileID: 7105626062597683626, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
         type: 3}
@@ -416,6 +440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startLifetime.minMaxState
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105626062597683626, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
+        type: 3}
+      propertyPath: InitialModule.randomizeRotationDirection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7105626062597683626, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
         type: 3}
@@ -894,3 +923,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cfaa1c61fc9bf4fb96798a35a42396, type: 3}
+--- !u!1 &2977666470506659445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 647709185084313634, guid: 01cfaa1c61fc9bf4fb96798a35a42396,
+    type: 3}
+  m_PrefabInstance: {fileID: 2427418151417720407}
+  m_PrefabAsset: {fileID: 0}

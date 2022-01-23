@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SpawnWhenShot : MonoBehaviour
 {
-    [SerializeField] GameObject objectToSpawn;
+    [SerializeField] List<GameObject> objectsToSpawn;
 
     private void OnCollisionEnter(Collision other) {
         if (other.transform.CompareTag("Bullet")){
-            GameObject.Instantiate(objectToSpawn, transform.position, transform.rotation);
+            foreach(GameObject obj in objectsToSpawn){
+                GameObject.Instantiate(obj, transform.position, transform.rotation);
+            }
         }
     }
 }
