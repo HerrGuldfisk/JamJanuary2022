@@ -24,7 +24,7 @@ public class IHover : IState
 
     public void Execute()
     {
-        if(Vector3.Distance(owner.transform.position, PlayerPosition.position) < 12f)
+        if(Vector3.Distance(owner.transform.position, PlayerPosition.position) < 10f)
         {
             owner.transform.LookAt(PlayerPosition.position);
 

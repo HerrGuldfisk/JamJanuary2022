@@ -43,7 +43,7 @@ public class IRest : IState
 
             currentTime -= Time.deltaTime;
         }
-        else if (currentTime < 0 && Vector3.Distance(PlayerPosition.position, owner.transform.position) > 16f)
+        else if (currentTime < 0 && Vector3.Distance(PlayerPosition.position, owner.transform.position) > 8f)
         {
             owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.CHASEAIR]);
         }

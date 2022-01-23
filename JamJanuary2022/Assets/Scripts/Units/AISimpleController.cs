@@ -29,6 +29,7 @@ public class AISimpleController : Unit
     void Start()
     {
         character = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
 
         state[AIStates.DIE] = new IDie(this);
         state[AIStates.CHASEAIR] = new IChase(this);
