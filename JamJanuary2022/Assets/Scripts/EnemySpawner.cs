@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public int xSize = MapGenerator.xSize;
-    public int zSize = MapGenerator.zSize;
+    private int xSize = MapGenerator.xSize;
+    private int zSize = MapGenerator.zSize;
 
     int randomX;
     int randomZ;
