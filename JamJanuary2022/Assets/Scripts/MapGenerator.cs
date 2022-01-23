@@ -12,6 +12,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] GameObject soundPopPrefab;
 
     Mesh mesh;
+    Mesh oldMesh;
     MeshFilter meshFilter;
 
     Vector3[] vertices;
@@ -121,7 +122,7 @@ public class MapGenerator : MonoBehaviour
 
     }
 
-    protected void FixedUpdate() //1
+    /*protected void FixedUpdate() //1
     {
         if (!isAnimate) //2
         {
@@ -129,6 +130,8 @@ public class MapGenerator : MonoBehaviour
         }
 
         runTime = Time.time - startTime; //3
+
+        Debug.Log("Running Update");
 
         if (runTime < duration)  //4
         {
@@ -151,7 +154,7 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
-
+    */
     public void OnKill(Vector3 enemyPos)
     {
         Vector3 playerPos = Vector3.zero;
@@ -161,13 +164,8 @@ public class MapGenerator : MonoBehaviour
             playerPos = player.transform.position;
         }
 
-        for (var i = 0; i < vertices.Length; i++)
-        {
-            if (vertices[i] == new Vector3(enemyPos.x, vertices[i].y, enemyPos.z))
-            {
-                DoAction(i, enemyPos);
-            }
-        }
+        Vector3Int roundpPos = new Vector3Int(Mathf.RoundToInt(playerPos.x), Mathf.RoundToInt(playerPos.y), Mathf.RoundToInt(playerPos.z));
+        Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(enemyPos.x), Mathf.RoundToInt(enemyPos.y), Mathf.RoundToInt(enemyPos.z));
 
         CreateNewShape(playerPos, enemyPos, vertices);
         UpdateMesh();
@@ -182,9 +180,9 @@ public class MapGenerator : MonoBehaviour
 
     private void PullSimilarVertices(int index, Vector3 newPos)
     {
-        Vector3 targetVertexPos = vertices[index]; //1
-        List<int> relatedVertices = FindRelatedVertices(targetVertexPos, false); //2
-        foreach (int i in relatedVertices) //3
+        Vector3 targetVertexPos = vertices[index];
+        List<int> relatedVertices = FindRelatedVertices(targetVertexPos, false);
+        foreach (int i in relatedVertices)
         {
             vertices[i] = newPos;
         }
@@ -279,31 +277,40 @@ public class MapGenerator : MonoBehaviour
         Vector3Int roundpPos = new Vector3Int(Mathf.RoundToInt(pPos.x), Mathf.RoundToInt(pPos.y), Mathf.RoundToInt(pPos.z));
         Vector3Int roundePos = new Vector3Int(Mathf.RoundToInt(ePos.x), Mathf.RoundToInt(ePos.y), Mathf.RoundToInt(ePos.z));
 
-        float dist = Vector3.Distance(ePos, pPos);
-        int raiseArea = 1 + Mathf.RoundToInt(dist/5);
-        float raiseHeight = 1f + dist/5f;
-
         for (var i = 0; i < prevVertices.Length; i++)
         {
+            // Select Vert
             if (prevVertices[i] == new Vector3(roundePos.x, prevVertices[i].y, roundePos.z))
             {
-                for (int u = roundePos.x - raiseArea; u < roundePos.x + raiseArea; u++)
-                {
-                    for (int v = roundePos.z - raiseArea; v < roundePos.z + raiseArea; v++)
-                    {
-                        for (var j = 0; j < prevVertices.Length; j++)
-                        {
-                            if (prevVertices[j] == new Vector3(u, prevVertices[j].y, v))
-                            {
-                                prevVertices[j].y += raiseHeight;
-                            }
-                        }
-                    } 
-                }
-                raiseHeight -= 0.6f;
+                // Change verts around selected
+                ChangeVerts(roundePos, roundpPos, prevVertices);
+
             }
         }
         CreateTriangles();
+    }
+
+    void ChangeVerts(Vector3Int ePos, Vector3Int pPos, Vector3[] prevVertices)
+    {
+        float dist = Vector3.Distance(ePos, pPos);
+        int raiseArea = 1 + Mathf.RoundToInt(dist / 5);
+        float raiseHeight = 1f + dist / 5f;
+
+        for (int u = ePos.x - raiseArea; u < ePos.x + raiseArea; u++)
+        {
+            for (int v = ePos.z - raiseArea; v < ePos.z + raiseArea; v++)
+            {
+                for (var j = 0; j < prevVertices.Length; j++)
+                {
+                    if (prevVertices[j] == new Vector3(u, prevVertices[j].y, v))
+                    {
+                        raiseHeight += Random.Range(-0.4f, 0.2f);
+                        prevVertices[j].y = raiseHeight;
+                    }
+                }
+            }
+        }
+        raiseHeight -= 0.2f;
     }
 
     void CreateInitShape()
@@ -314,8 +321,8 @@ public class MapGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                //float y = Mathf.PerlinNoise(x * .8f, z * .8f) * 2f;
-                float y = 0;
+                float y = Mathf.PerlinNoise(x * .1f, z * .1f) * 2f;
+                //float y = 0;
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }
