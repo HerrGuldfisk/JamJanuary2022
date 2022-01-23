@@ -65,7 +65,8 @@ public class AISimpleController : Unit
     {
         if(collision.gameObject.tag == "Bullet")
         {
-            AlertAI();
+            // Yeeting bees left and right.
+            // AlertAI();
 
             FindObjectOfType<MapGenerator>().OnKill(transform.position);
             //stateMachine.ChangeState(state[AIStates.DIE]);
