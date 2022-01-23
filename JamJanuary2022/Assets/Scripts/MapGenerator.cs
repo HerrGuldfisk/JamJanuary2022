@@ -294,32 +294,35 @@ public class MapGenerator : MonoBehaviour
     {
         float dist = Vector3.Distance(ePos, pPos);
         int raiseArea = 1 + Mathf.RoundToInt(dist / 4);
-        float raiseHeight = 1f + dist / 4f;
+        float raiseHeight = 0.6f + (dist / 10f);
+
+        raiseHeight += Random.Range(-0.2f, 0.4f);
 
         for (int u = ePos.x - raiseArea; u < ePos.x + raiseArea; u++)
         {
+            /*
+            if (u == ePos.x - raiseArea || u == ePos.x + raiseArea)
+            {
+                raiseHeight -= 0.2f;
+            }*/
+
             for (int v = ePos.z - raiseArea; v < ePos.z + raiseArea; v++)
             {
                 /*
-                if (u == ePos.x - raiseArea || u == ePos.x + raiseArea)
+                if (v == ePos.z - raiseArea || v == ePos.z + raiseArea)
                 {
-                    if (v == ePos.z - raiseArea || v == ePos.z + raiseArea)
-                    {
-                        raiseHeight -= 0.4f;
-                    }
+                    raiseHeight -= 0.2f;
                 }*/
 
                 for (var j = 0; j < prevVertices.Length; j++)
                 {
                     if (prevVertices[j] == new Vector3(u, prevVertices[j].y, v))
                     {
-                        raiseHeight += Random.Range(-0.2f, 0.2f);
-                        prevVertices[j].y = raiseHeight;
+                        prevVertices[j].y += raiseHeight + Random.Range(-0.04f, 0.04f); ;
                     }
                 }
             }
         }
-        raiseHeight -= 0.2f;
     }
 
     void CreateInitShape()
