@@ -40,18 +40,19 @@ public class Health : MonoBehaviour
         //DMG SFX
         GameObject.Instantiate(hurtSFXPopPrefab, transform.position, Quaternion.identity);
 
+        //DMG IMAGE
+        recentlyDamaged = true;
+        dmgImage.alpha = dmgImageAlphaMax;
+
         //DMG VALUE
         currentHealth -= damage;
         UpdateBar();
         if (currentHealth <= 0) Die();
-
-        //DMG IMAGE
-        recentlyDamaged = true;
-        dmgImage.alpha = dmgImageAlphaMax;
     }
 
     void Die(){
         deathScreen.alpha = 1;
+        dmgImage.alpha = 0;
         Destroy(gameObject);
     }
 
