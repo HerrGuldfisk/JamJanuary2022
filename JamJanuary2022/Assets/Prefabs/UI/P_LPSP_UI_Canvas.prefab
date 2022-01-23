@@ -567,47 +567,32 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controls
-
-
-
-    Movement:
+  m_text: 'Movement:
 
     - Mouse to look around.
 
-    - WASD keys
-    to walk.
+    - WASD keys to walk.
 
-    - Left shift (hold) to run.
+    -
+    Left shift (hold) to run.
 
 
     Weapon:
 
-    - Left click to
-    shoot.
+    - Left click to shoot.
 
-    - Right click (hold) to aim.
+    - Right
+    click (hold) to aim.
 
     - R key to reload.
 
-    - T key
-    to inspect weapon.
 
-    - H key to holster, and H again to take out weapon.
+    Game:
+
+    - ESC to quit.
 
     -
-    Q/scrollwheel key to cycle equipped weapons.
-
-
-    Timescale:
-
-    - 5 key to
-    freeze/unfreeze time.
-
-    - 8 key to decrease timescale.
-
-    - 9 key to increase
-    timescale.'
+    P key to play from beginning'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52822dc6e80b18c4b84fa37fb0a9018f, type: 2}
   m_sharedMaterial: {fileID: -5066701443530399222, guid: 52822dc6e80b18c4b84fa37fb0a9018f,

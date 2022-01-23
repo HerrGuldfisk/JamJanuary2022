@@ -304,7 +304,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if (prevVertices[j] == new Vector3(u, prevVertices[j].y, v))
                     {
-                        raiseHeight += Random.Range(-0.4f, 0.2f);
+                        raiseHeight += Random.Range(-0.2f, 0.2f);
                         prevVertices[j].y = raiseHeight;
                     }
                 }
