@@ -58,7 +58,7 @@ public class AISimpleController : Unit
             //stateMachine.ChangeState(state[AIStates.DIE]);
             GameObject.Instantiate(sfxPop, transform.position, Quaternion.identity);
             GameObject.Instantiate(vfxPop, transform.position, Quaternion.identity);
-            GameObject.FindObjectOfType<ScoreSystem>().Add(10);
+            GameObject.FindObjectOfType<ScoreSystem>().Add(1);
             DestroyUnit();
         }
 
