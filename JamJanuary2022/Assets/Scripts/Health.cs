@@ -32,8 +32,6 @@ public class Health : MonoBehaviour
 
     void UpdateBar(){
         progressBar.BarValue = ((float)currentHealth/(float)totalHealth)*100;
-        Debug.Log("health is now " + currentHealth);
-        Debug.Log("bar value is " + progressBar.BarValue);
     }
 
     public void TakeDamage(int damage){

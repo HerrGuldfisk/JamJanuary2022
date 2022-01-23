@@ -11,7 +11,7 @@ public class DestroyAfterPlayback : MonoBehaviour
 
         float clipLength = 0;
         
-        if (audioSource.clip != null){
+        if (audioSource!=null && audioSource.clip != null){
             clipLength = audioSource.clip.length;
         }
 
