@@ -6,7 +6,22 @@ public class IChase : IState
 {
     AISimpleController owner;
 
-    float unitSpeed = 3f;
+    Vector3 startPosition;
+    Vector3 endPosition;
+    Vector3 midPosition;
+
+    float unitSpeed = 4.5f;
+
+    float maxTime = 4f;
+    float currentTime;
+
+    float count
+    {
+        get
+        {
+            return currentTime / 4f;
+        }
+    }
 
     public IChase(AISimpleController owner)
     {
@@ -15,14 +30,38 @@ public class IChase : IState
 
     public void Enter()
     {
-        
+        currentTime = 0;
+        owner.anim.Play("Flying");
+
+        startPosition = owner.transform.position;
+        // endPosition = (PlayerPosition.position - owner.transform.position).normalized * 16f;
+        endPosition = PlayerPosition.position;
+        midPosition = startPosition + (endPosition - startPosition) / 2f + Vector3.up * Random.Range(3f, 7f);
+
+        //Debug.Log(startPosition);
+        //Debug.Log(endPosition);
+        //Debug.Log(midPosition);
     }
 
     public void Execute()
     {
-        if(PlayerPosition.position != null)
+        if (PlayerPosition.position != null)
         {
-            owner.character.Move((PlayerPosition.position - owner.transform.position).normalized * Time.deltaTime * unitSpeed);
+            if (count < 1.0f)
+            {
+                currentTime += Time.deltaTime;
+
+                Vector3 m1 = Vector3.Lerp(startPosition, midPosition, count);
+                Vector3 m2 = Vector3.Lerp(midPosition, endPosition, count);
+                owner.character.Move(Vector3.Lerp(m1, m2, count) - owner.transform.position);
+
+                //if(Vector3.Distance)
+            }
+            else
+            {
+                owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.REST]);
+            }
+            // owner.character.Move((PlayerPosition.position - owner.transform.position).normalized * Time.deltaTime * unitSpeed);
             owner.transform.LookAt(PlayerPosition.position);
         }
 
@@ -36,6 +75,8 @@ public class IChase : IState
 
     public void Exit()
     {
-        
+
     }
+
+    
 }

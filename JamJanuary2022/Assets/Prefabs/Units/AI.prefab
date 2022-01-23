@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3670098767583643797}
   - component: {fileID: 3336087964684321745}
   - component: {fileID: 2333942115486954722}
+  - component: {fileID: 3232438362361798759}
   m_Layer: 2
   m_Name: AI
   m_TagString: Enemy
@@ -82,6 +83,25 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &3232438362361798759
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563933478908809845}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b77ab50326c042e880d0a65532992b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7866128530532704673
 PrefabInstance:
   m_ObjectHideFlags: 0

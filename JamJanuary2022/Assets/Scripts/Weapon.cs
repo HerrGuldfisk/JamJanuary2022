@@ -15,4 +15,9 @@ public class Weapon : MonoBehaviour
     {
         
     }
+
+    public void SpawnBullet()
+    {
+
+    }
 }
