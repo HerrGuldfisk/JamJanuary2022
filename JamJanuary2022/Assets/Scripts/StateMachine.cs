@@ -12,9 +12,9 @@ public class StateMachine
         if(currentState != null)
         {
             currentState.Exit();
+            previousState = currentState;
         }
 
-        previousState = currentState;
         currentState = newState;
         currentState.Enter();
     }

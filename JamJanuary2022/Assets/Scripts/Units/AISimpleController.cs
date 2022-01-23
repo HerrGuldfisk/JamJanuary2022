@@ -17,7 +17,8 @@ public class AISimpleController : Unit
     {
         IDLE,
         PATROL,
-        CHASE,
+        CHASEAIR,
+        REST,
         PROXIMITY,
         SHOOT,
         DIE
@@ -31,9 +32,10 @@ public class AISimpleController : Unit
         state[AIStates.PROXIMITY] = new IProximity(this);
         state[AIStates.DIE] = new IDie(this);
         state[AIStates.SHOOT] = new IShoot(this);
-        state[AIStates.CHASE] = new IChase(this);
+        state[AIStates.CHASEAIR] = new IChaseAir(this);
+        state[AIStates.REST] = new IRest(this);
 
-        stateMachine.ChangeState(state[AIStates.CHASE]);
+        stateMachine.ChangeState(state[AIStates.CHASEAIR]);
     }
 
     // Update is called once per frame
@@ -44,26 +46,16 @@ public class AISimpleController : Unit
 
         if (Physics.Raycast(downRay, out hit, 50f))
         {
-            Debug.Log("Ground is below");
             if(hit.distance > 0.1f)
             {
                 character.Move(new Vector3(0, -9.82f, 0) * Time.deltaTime);
-            }
-        }
-        else
-        {
-            Ray upRay = new Ray(transform.position - new Vector3(0, -1, 0), Vector3.up);
-
-            if (Physics.Raycast(upRay, out hit, 50f))
-            {
-                Debug.Log("Ground is above");
-                character.Move(new Vector3(0, hit.distance, 0));
             }
         }
 
 
         if(stateMachine.currentState != null)
         {
+            // Debug.Log(stateMachine.currentState);
             stateMachine.ExecuteState();
         }
     }
