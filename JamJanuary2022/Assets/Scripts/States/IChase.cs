@@ -38,9 +38,9 @@ public class IChase : IState
         endPosition = PlayerPosition.position;
         midPosition = startPosition + (endPosition - startPosition) / 2f + Vector3.up * Random.Range(3f, 7f);
 
-        Debug.Log(startPosition);
-        Debug.Log(endPosition);
-        Debug.Log(midPosition);
+        //Debug.Log(startPosition);
+        //Debug.Log(endPosition);
+        //Debug.Log(midPosition);
     }
 
     public void Execute()
@@ -54,6 +54,8 @@ public class IChase : IState
                 Vector3 m1 = Vector3.Lerp(startPosition, midPosition, count);
                 Vector3 m2 = Vector3.Lerp(midPosition, endPosition, count);
                 owner.character.Move(Vector3.Lerp(m1, m2, count) - owner.transform.position);
+
+                //if(Vector3.Distance)
             }
             else
             {
