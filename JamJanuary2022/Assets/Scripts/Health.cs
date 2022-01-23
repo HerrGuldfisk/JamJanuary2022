@@ -78,5 +78,9 @@ public class Health : MonoBehaviour
             TakeDamage(1);
             Destroy(other.gameObject);
         }
+        else if (other.transform.CompareTag("Respawn")){
+            Die();
+        }
+
     }
 }
