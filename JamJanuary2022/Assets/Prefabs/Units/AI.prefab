@@ -32,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4415130883410221737}
+  - {fileID: 8231853102558619825}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,6 +52,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   character: {fileID: 0}
   onGround: 0
+  sfxPop: {fileID: 381154442402846911, guid: 2e359d3387ea6a24eb08f1324d6d77c4, type: 3}
+  vfxPop: {fileID: 2977666470506659445, guid: 4720e15f300eb6546be4c1bba4b3e6cc, type: 3}
 --- !u!143 &3336087964684321745
 CharacterController:
   m_ObjectHideFlags: 0
@@ -102,6 +105,81 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &3980737588414191354
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2714266569890614559}
+    m_Modifications:
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.97628266
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.21649987
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972820022956998580, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+        type: 3}
+      propertyPath: m_Name
+      value: Bee Buzz Emitter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd5f245b24e30c1439d8fa4d764dbb8e, type: 3}
+--- !u!4 &8231853102558619825 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4972820022956998219, guid: cd5f245b24e30c1439d8fa4d764dbb8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3980737588414191354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7866128530532704673
 PrefabInstance:
   m_ObjectHideFlags: 0

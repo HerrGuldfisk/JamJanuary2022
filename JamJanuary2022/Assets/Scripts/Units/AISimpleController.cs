@@ -13,6 +13,9 @@ public class AISimpleController : Unit
 
     public Dictionary<AIStates, IState> state = new Dictionary<AIStates, IState>();
 
+    [SerializeField] GameObject sfxPop;
+    [SerializeField] GameObject vfxPop;
+
     public enum AIStates
     {
         CHASEAIR,
@@ -33,7 +36,7 @@ public class AISimpleController : Unit
         state[AIStates.HOVER] = new IHover(this);
         state[AIStates.BOMB] = new IBomb(this);
 
-        stateMachine.ChangeState(state[AIStates.REST]);
+        stateMachine.ChangeState(state[AIStates.CHASEAIR]);
     }
 
     // Update is called once per frame
@@ -51,7 +54,11 @@ public class AISimpleController : Unit
         if(collision.gameObject.tag == "Bullet")
         {
             FindObjectOfType<MapGenerator>().OnKill(transform.position);
-            stateMachine.ChangeState(state[AIStates.DIE]);
+            //stateMachine.ChangeState(state[AIStates.DIE]);
+            GameObject.Instantiate(sfxPop, transform.position, Quaternion.identity);
+            GameObject.Instantiate(vfxPop, transform.position, Quaternion.identity);
+            GameObject.FindObjectOfType<ScoreSystem>().Add(10);
+            DestroyUnit();
         }
 
         if(collision.gameObject.tag == "Terrain")

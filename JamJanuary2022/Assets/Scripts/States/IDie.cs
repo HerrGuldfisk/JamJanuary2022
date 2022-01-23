@@ -5,6 +5,8 @@ using UnityEngine;
 public class IDie : IState
 {
     Unit owner;
+    [SerializeField] GameObject sfxPop;
+    [SerializeField] GameObject vfxPop;
 
     public IDie(Unit owner)
     {
@@ -13,6 +15,8 @@ public class IDie : IState
 
     public void Enter()
     {
+        GameObject.Instantiate(sfxPop, owner.transform.position, Quaternion.identity);
+        GameObject.Instantiate(vfxPop, owner.transform.position, Quaternion.identity);
         GameObject.FindObjectOfType<ScoreSystem>().Add(10);
         owner.DestroyUnit();
     }
