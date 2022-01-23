@@ -36,7 +36,7 @@ public class IProximity : IState
             if(unit.gameObject.tag == "Player")
             {
                 owner.transform.LookAt(unit.transform.position, Vector3.up);
-                owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.SHOOT]);
+                //owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.SHOOT]);
             }
         }
     }

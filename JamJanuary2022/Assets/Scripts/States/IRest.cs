@@ -24,6 +24,17 @@ public class IRest : IState
 
     public void Execute()
     {
+        RaycastHit hit;
+        Ray downRay = new Ray(owner.transform.position - new Vector3(0, -1, 0), Vector3.down);
+
+        if (Physics.Raycast(downRay, out hit, 50f))
+        {
+            if (hit.distance > 0.1f)
+            {
+                owner.character.Move(new Vector3(0, -9.82f, 0) * Time.deltaTime);
+            }
+        }
+
         if (PlayerPosition.position != null && currentTime > 0)
         {
             owner.character.Move((PlayerPosition.position - owner.transform.position).normalized * Time.deltaTime * unitSpeed);
@@ -32,9 +43,13 @@ public class IRest : IState
 
             currentTime -= Time.deltaTime;
         }
-        else if (currentTime < 0)
+        else if (currentTime < 0 && Vector3.Distance(PlayerPosition.position, owner.transform.position) > 16f)
         {
             owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.CHASEAIR]);
+        }
+        else
+        {
+            owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.REST]);
         }
     }
 

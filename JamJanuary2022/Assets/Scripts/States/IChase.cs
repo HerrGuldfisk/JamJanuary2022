@@ -10,9 +10,6 @@ public class IChase : IState
     Vector3 endPosition;
     Vector3 midPosition;
 
-    float unitSpeed = 4.5f;
-
-    float maxTime = 4f;
     float currentTime;
 
     float count
@@ -36,7 +33,8 @@ public class IChase : IState
         startPosition = owner.transform.position;
         // endPosition = (PlayerPosition.position - owner.transform.position).normalized * 16f;
         endPosition = PlayerPosition.position;
-        midPosition = startPosition + (endPosition - startPosition) / 2f + Vector3.up * Random.Range(3f, 7f);
+        midPosition = startPosition + (endPosition - startPosition) / 2f + Vector3.up * Random.Range(3f, 7f)
+            + new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
 
         //Debug.Log(startPosition);
         //Debug.Log(endPosition);
@@ -55,7 +53,11 @@ public class IChase : IState
                 Vector3 m2 = Vector3.Lerp(midPosition, endPosition, count);
                 owner.character.Move(Vector3.Lerp(m1, m2, count) - owner.transform.position);
 
-                //if(Vector3.Distance)
+                if(Vector3.Distance(owner.transform.position, PlayerPosition.position) < 8f)
+                {
+                    Debug.Log("Enter hover");
+                    owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.HOVER]);
+                }
             }
             else
             {

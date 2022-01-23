@@ -15,12 +15,10 @@ public class AISimpleController : Unit
 
     public enum AIStates
     {
-        IDLE,
-        PATROL,
         CHASEAIR,
         REST,
-        PROXIMITY,
-        SHOOT,
+        HOVER,
+        BOMB,
         DIE
     }
 
@@ -29,30 +27,18 @@ public class AISimpleController : Unit
     {
         character = GetComponent<CharacterController>();
 
-        state[AIStates.PROXIMITY] = new IProximity(this);
         state[AIStates.DIE] = new IDie(this);
-        state[AIStates.SHOOT] = new IShoot(this);
         state[AIStates.CHASEAIR] = new IChase(this);
         state[AIStates.REST] = new IRest(this);
+        state[AIStates.HOVER] = new IHover(this);
+        state[AIStates.BOMB] = new IBomb(this);
 
-        stateMachine.ChangeState(state[AIStates.CHASEAIR]);
+        stateMachine.ChangeState(state[AIStates.REST]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        Ray downRay = new Ray(transform.position - new Vector3(0, -1, 0), Vector3.down);
-
-        if (Physics.Raycast(downRay, out hit, 50f))
-        {
-            if(hit.distance > 0.1f)
-            {
-                character.Move(new Vector3(0, -9.82f, 0) * Time.deltaTime);
-            }
-        }
-
-
         if(stateMachine.currentState != null)
         {
             // Debug.Log(stateMachine.currentState);
