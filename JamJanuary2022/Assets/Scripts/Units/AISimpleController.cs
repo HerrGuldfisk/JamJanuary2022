@@ -39,7 +39,6 @@ public class AISimpleController : Unit
     // Update is called once per frame
     void Update()
     {
-
         RaycastHit hit;
         Ray downRay = new Ray(transform.position - new Vector3(0, -1, 0), Vector3.down);
 
@@ -89,5 +88,10 @@ public class AISimpleController : Unit
         {
             onGround = false;
         }
+    }
+
+    public void HearNoise()
+    {
+
     }
 }

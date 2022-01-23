@@ -23,15 +23,21 @@ public class IShoot : IState
 
     public void Enter()
     {
-        Debug.Log("Pew Pew");
+
     }
 
     public void Execute()
     {
-        /*if(bullets > 0 && currentTimer <= 0)
+        if(bullets > 0 && currentTimer <= 0)
         {
-            
-        }*/
+            RaycastHit hit;
+            Ray forwardRay = new Ray(owner.transform.position, Vector3.forward);
+
+            if (Physics.Raycast(forwardRay, out hit, 50f))
+            {
+                GameObject tempBullet = weapon.SpawnBullet();
+            }
+        }
     }
 
     public void Exit()
