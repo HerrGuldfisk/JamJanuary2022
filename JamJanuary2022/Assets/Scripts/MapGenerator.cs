@@ -293,13 +293,22 @@ public class MapGenerator : MonoBehaviour
     void ChangeVerts(Vector3Int ePos, Vector3Int pPos, Vector3[] prevVertices)
     {
         float dist = Vector3.Distance(ePos, pPos);
-        int raiseArea = 1 + Mathf.RoundToInt(dist / 5);
-        float raiseHeight = 1f + dist / 5f;
+        int raiseArea = 1 + Mathf.RoundToInt(dist / 4);
+        float raiseHeight = 1f + dist / 4f;
 
         for (int u = ePos.x - raiseArea; u < ePos.x + raiseArea; u++)
         {
             for (int v = ePos.z - raiseArea; v < ePos.z + raiseArea; v++)
             {
+                /*
+                if (u == ePos.x - raiseArea || u == ePos.x + raiseArea)
+                {
+                    if (v == ePos.z - raiseArea || v == ePos.z + raiseArea)
+                    {
+                        raiseHeight -= 0.4f;
+                    }
+                }*/
+
                 for (var j = 0; j < prevVertices.Length; j++)
                 {
                     if (prevVertices[j] == new Vector3(u, prevVertices[j].y, v))

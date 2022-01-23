@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     float delay;
     [SerializeField] float startDelay = 4;
     [SerializeField] float delayPercShorteningPerSecond = 1f;
+    [SerializeField] float minSpawnRangeFromPlayer = 15f;
 
     private void Start()
     {
@@ -27,9 +28,22 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 GenerateSpawnPoint()
     {
+
+
         randomX = Random.Range(0, xSize);
         randomZ = Random.Range(0, zSize);
 
+        //CHECK AGAINST PLAYER POS
+        Transform playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        Vector2 playerPos2D = new Vector2(playerTrans.position.x, playerTrans.position.z);
+        Vector2 spawnPos2D = new Vector2(randomX, randomZ);
+        while (Vector2.Distance(playerPos2D, spawnPos2D) < minSpawnRangeFromPlayer){
+            randomX = Random.Range(0, xSize);
+            randomZ = Random.Range(0, zSize);
+            spawnPos2D = new Vector2(randomX, randomZ);
+        }
+
+        //GENERATE SPAWNPOINT
         Vector3 spawnPoint = Vector3.zero;
 
         Vector3 randomPoint = new Vector3(randomX, 10000, randomZ);
