@@ -2,25 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IRest : IState
+public class IFlee : IState
 {
     AISimpleController owner;
 
-    public IRest(AISimpleController owner)
+    public IFlee(AISimpleController owner)
     {
         this.owner = owner;
     }
 
-    float unitSpeed = 2.5f;
+    float unitSpeed = 5f;
 
-    float maxTime = 4f;
+    float fleeTimer = 2f;
     float currentTime;
 
     public void Enter()
     {
-        maxTime = Random.Range(1.5f, 4f);
-        currentTime = maxTime;
-        owner.anim.Play("Idle");
+        currentTime = fleeTimer;
     }
 
     public void Execute()
@@ -38,14 +36,10 @@ public class IRest : IState
 
         if (PlayerPosition.position != null && currentTime > 0)
         {
-            // owner.character.Move((PlayerPosition.position - owner.transform.position).normalized * Time.deltaTime * unitSpeed);
-            owner.transform.LookAt(PlayerPosition.position);
+            owner.transform.LookAt(owner.transform.position - PlayerPosition.position);
+            owner.character.Move((owner.transform.position - PlayerPosition.position).normalized * Time.deltaTime * unitSpeed);
 
             currentTime -= Time.deltaTime;
-        }
-        else if (currentTime < 0 && Vector3.Distance(PlayerPosition.position, owner.transform.position) > 8f)
-        {
-            owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.CHASEAIR]);
         }
         else
         {

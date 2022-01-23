@@ -22,6 +22,7 @@ public class AISimpleController : Unit
         REST,
         HOVER,
         BOMB,
+        FLEE,
         DIE
     }
 
@@ -36,8 +37,18 @@ public class AISimpleController : Unit
         state[AIStates.REST] = new IRest(this);
         state[AIStates.HOVER] = new IHover(this);
         state[AIStates.BOMB] = new IBomb(this);
+        state[AIStates.FLEE] = new IFlee(this);
 
-        stateMachine.ChangeState(state[AIStates.REST]);
+        float value = Random.value;
+
+        if(value > 0.3f)
+        {
+            stateMachine.ChangeState(state[AIStates.REST]);
+        }
+        else
+        {
+            stateMachine.ChangeState(state[AIStates.CHASEAIR]);
+        }
     }
 
     // Update is called once per frame
@@ -54,6 +65,8 @@ public class AISimpleController : Unit
     {
         if(collision.gameObject.tag == "Bullet")
         {
+            AlertAI();
+
             FindObjectOfType<MapGenerator>().OnKill(transform.position);
             //stateMachine.ChangeState(state[AIStates.DIE]);
             GameObject.Instantiate(sfxPop, transform.position, Quaternion.identity);
@@ -76,8 +89,21 @@ public class AISimpleController : Unit
         }
     }
 
-    public void HearNoise()
+    public void AlertAI()
     {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 12f);
 
+        foreach(Collider collider in colliders)
+        {
+            if(collider.gameObject.tag == "Enemy")
+            {
+                AISimpleController tempController = collider.GetComponent<AISimpleController>();
+
+                if (tempController.stateMachine.currentState == state[AIStates.REST])
+                {
+                    tempController.stateMachine.ChangeState(tempController.state[AIStates.FLEE]);
+                }
+            }
+        }
     }
 }
