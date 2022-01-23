@@ -65,7 +65,7 @@ public class IChase : IState
                 Vector3 m2 = Vector3.Lerp(midPosition, endPosition, count);
                 owner.character.Move(Vector3.Lerp(m1, m2, count) - owner.transform.position);
 
-                if(Vector3.Distance(owner.transform.position, PlayerPosition.position) < 8f)
+                if(Vector3.Distance(owner.transform.position, PlayerPosition.position) < 7f)
                 {
                     Debug.Log("Enter hover");
                     owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.HOVER]);

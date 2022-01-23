@@ -19,6 +19,7 @@ public class IBomb : IState
 
     public void Enter()
     {
+        owner.anim.Play("Flying");
         startPos = owner.transform.position;
         targetPos = PlayerPosition.position;
         pos = 0;
