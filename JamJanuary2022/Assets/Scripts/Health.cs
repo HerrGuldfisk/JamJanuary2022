@@ -8,13 +8,25 @@ public class Health : MonoBehaviour
     [SerializeField] int totalHealth = 5;
     [SerializeField] ProgressBar progressBar;
     [SerializeField] CanvasGroup deathScreen;
+    [SerializeField] CanvasGroup dmgImage;
+    [SerializeField] float dmgImageAlphaMax = 0.5f;
+    [SerializeField] float dmgImageFalloffTime = 0.5f;
+    
     int currentHealth;
+    bool recentlyDamaged = false;
 
     void Start()
     {
         currentHealth = totalHealth;
         UpdateBar();
         deathScreen.alpha = 0;
+    }
+
+    private void Update() {
+        if (recentlyDamaged){
+            dmgImage.alpha -= dmgImageAlphaMax*Time.deltaTime/dmgImageFalloffTime;
+            if (dmgImage.alpha <= 0) recentlyDamaged = false;
+        }
     }
 
     void UpdateBar(){
@@ -25,6 +37,8 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage){
         currentHealth -= damage;
+        recentlyDamaged = true;
+        dmgImage.alpha = dmgImageAlphaMax;
         UpdateBar();
         if (currentHealth <= 0) Die();
     }

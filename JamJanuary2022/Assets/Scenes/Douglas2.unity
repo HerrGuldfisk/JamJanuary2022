@@ -676,6 +676,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1105858553128437111, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
+      propertyPath: dmgImage
+      value: 
+      objectReference: {fileID: 1631268877}
+    - target: {fileID: 1105858553128437111, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
+        type: 3}
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 70317327}
@@ -746,3 +751,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
+--- !u!225 &1631268877 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 6822986598928018526, guid: 804314269bb1bd34a9980e9271b8f08b,
+    type: 3}
+  m_PrefabInstance: {fileID: 644552181}
+  m_PrefabAsset: {fileID: 0}
