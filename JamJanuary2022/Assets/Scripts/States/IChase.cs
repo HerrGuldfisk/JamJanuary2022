@@ -34,7 +34,7 @@ public class IChase : IState
         // endPosition = (PlayerPosition.position - owner.transform.position).normalized * 16f;
         endPosition = PlayerPosition.position;
         midPosition = startPosition + (endPosition - startPosition) / 2f + Vector3.up * Random.Range(3f, 7f)
-            + new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
+            + new Vector3(Random.Range(-8, 8), 0, Random.Range(-8, 8));
 
         //Debug.Log(startPosition);
         //Debug.Log(endPosition);

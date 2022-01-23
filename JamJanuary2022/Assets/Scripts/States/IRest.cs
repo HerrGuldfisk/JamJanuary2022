@@ -11,7 +11,7 @@ public class IRest : IState
         this.owner = owner;
     }
 
-    float unitSpeed = 1.5f;
+    float unitSpeed = 2.5f;
 
     float maxTime = 4f;
     float currentTime;
