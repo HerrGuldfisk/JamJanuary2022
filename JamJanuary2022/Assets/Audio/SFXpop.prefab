@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 647709185084313644}
   - component: {fileID: 647709185084313645}
   - component: {fileID: 647709185084313647}
+  - component: {fileID: 8588469679798851425}
   m_Layer: 0
   m_Name: SFXpop
   m_TagString: Untagged
@@ -138,5 +139,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e6556ab4447bfe4381ebf711e67c0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitchDivergence: 0
+--- !u!114 &8588469679798851425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647709185084313634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de118d9c6967f044d98a39da5ff335c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

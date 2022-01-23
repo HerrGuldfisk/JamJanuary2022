@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     [SerializeField] CanvasGroup dmgImage;
     [SerializeField] float dmgImageAlphaMax = 0.5f;
     [SerializeField] float dmgImageFalloffTime = 0.5f;
+    [SerializeField] GameObject hurtSFXPopPrefab;
     
     int currentHealth;
     bool recentlyDamaged = false;
@@ -36,11 +37,17 @@ public class Health : MonoBehaviour
     }
 
     public void TakeDamage(int damage){
+        //DMG SFX
+        GameObject.Instantiate(hurtSFXPopPrefab, transform.position, Quaternion.identity);
+
+        //DMG VALUE
         currentHealth -= damage;
-        recentlyDamaged = true;
-        dmgImage.alpha = dmgImageAlphaMax;
         UpdateBar();
         if (currentHealth <= 0) Die();
+
+        //DMG IMAGE
+        recentlyDamaged = true;
+        dmgImage.alpha = dmgImageAlphaMax;
     }
 
     void Die(){

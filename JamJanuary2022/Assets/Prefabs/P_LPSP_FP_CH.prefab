@@ -1311,6 +1311,11 @@ MonoBehaviour:
   totalHealth: 50
   progressBar: {fileID: 0}
   deathScreen: {fileID: 0}
+  dmgImage: {fileID: 0}
+  dmgImageAlphaMax: 0.5
+  dmgImageFalloffTime: 0.5
+  hurtSFXPopPrefab: {fileID: 5563776803794965283, guid: 5074f9c0e2942354aa8a209ff618539c,
+    type: 3}
 --- !u!1 &2906013363015915789
 GameObject:
   m_ObjectHideFlags: 0
