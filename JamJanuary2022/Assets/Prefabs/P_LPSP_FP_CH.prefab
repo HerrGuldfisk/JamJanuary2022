@@ -1316,6 +1316,15 @@ MonoBehaviour:
   dmgImageFalloffTime: 0.5
   hurtSFXPopPrefab: {fileID: 5563776803794965283, guid: 5074f9c0e2942354aa8a209ff618539c,
     type: 3}
+  deathSFXPopPrefab: {fileID: 7030439411577043753, guid: 9f9be354c9d41c841a149712180039b6,
+    type: 3}
+  componentsToTurnOffOnDeath:
+  - {fileID: 601192529242639950}
+  - {fileID: 1359246849}
+  - {fileID: 7999892636887377833}
+  objectsToTurnOffOnDeath:
+  - {fileID: 3086728168579613185}
+  - {fileID: 8729078486344784516}
 --- !u!1 &2906013363015915789
 GameObject:
   m_ObjectHideFlags: 0
