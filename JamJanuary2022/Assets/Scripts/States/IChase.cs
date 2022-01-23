@@ -26,11 +26,12 @@ public class IChase : IState
             owner.transform.LookAt(PlayerPosition.position);
         }
 
+        /*
         if(Vector3.Distance(owner.transform.position, PlayerPosition.position) < 10f)
         {
             owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.SHOOT]);
         }
-        
+        */
     }
 
     public void Exit()
