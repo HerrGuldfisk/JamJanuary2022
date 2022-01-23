@@ -31,8 +31,20 @@ public class IChase : IState
         owner.anim.Play("Flying");
 
         startPosition = owner.transform.position;
-        // endPosition = (PlayerPosition.position - owner.transform.position).normalized * 16f;
-        endPosition = PlayerPosition.position;
+
+        Vector3 playerPos = new Vector3(PlayerPosition.position.x, 0, PlayerPosition.position.z);
+        Vector3 ownerPos = new Vector3(owner.transform.position.x, 0, owner.transform.position.z);
+
+        if(Vector3.Distance(PlayerPosition.position, owner.transform.position) > 12f)
+        {
+            endPosition = owner.transform.position + (playerPos - ownerPos).normalized * 8f;
+        }
+        else
+        {
+            endPosition = PlayerPosition.position;
+        }
+        
+        // endPosition = PlayerPosition.position;
         midPosition = startPosition + (endPosition - startPosition) / 2f + Vector3.up * Random.Range(3f, 7f)
             + new Vector3(Random.Range(-8, 8), 0, Random.Range(-8, 8));
 

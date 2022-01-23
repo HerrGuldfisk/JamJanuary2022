@@ -37,7 +37,7 @@ public class AISimpleController : Unit
         state[AIStates.HOVER] = new IHover(this);
         state[AIStates.BOMB] = new IBomb(this);
 
-        stateMachine.ChangeState(state[AIStates.CHASEAIR]);
+        stateMachine.ChangeState(state[AIStates.REST]);
     }
 
     // Update is called once per frame
