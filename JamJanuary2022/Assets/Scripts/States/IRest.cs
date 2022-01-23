@@ -24,8 +24,6 @@ public class IRest : IState
 
     public void Execute()
     {
-        Debug.Log(currentTime);
-
         if (PlayerPosition.position != null && currentTime > 0)
         {
             owner.character.Move((PlayerPosition.position - owner.transform.position).normalized * Time.deltaTime * unitSpeed);

@@ -32,7 +32,7 @@ public class AISimpleController : Unit
         state[AIStates.PROXIMITY] = new IProximity(this);
         state[AIStates.DIE] = new IDie(this);
         state[AIStates.SHOOT] = new IShoot(this);
-        state[AIStates.CHASEAIR] = new IChaseAir(this);
+        state[AIStates.CHASEAIR] = new IChase(this);
         state[AIStates.REST] = new IRest(this);
 
         stateMachine.ChangeState(state[AIStates.CHASEAIR]);
