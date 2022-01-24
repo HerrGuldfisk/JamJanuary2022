@@ -8,7 +8,6 @@ public class Jump : MonoBehaviour
     [SerializeField] float jumpHeight = 5f;
     Vector3 newVel = Vector3.zero;
     Rigidbody rb;
-    bool grounded = true;
 
     private void Start() {
         rb = GetComponent<Rigidbody>();

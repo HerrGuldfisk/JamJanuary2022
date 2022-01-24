@@ -13,8 +13,6 @@ public class IBomb : IState
 
     Vector3 startPos;
     Vector3 targetPos;
-    float pos;
-
     float bombSpeed = 6f;
 
     public void Enter()
@@ -22,7 +20,6 @@ public class IBomb : IState
         owner.anim.Play("Flying");
         startPos = owner.transform.position;
         targetPos = PlayerPosition.position;
-        pos = 0;
     }
 
     public void Execute()

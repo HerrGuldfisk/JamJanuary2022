@@ -53,7 +53,6 @@ public class EnemySpawner : MonoBehaviour
         {
             randomPoint.y = hit.transform.position.y + 10;
             spawnPoint = randomPoint;
-            Debug.Log(spawnPoint);
         }
         else
         {

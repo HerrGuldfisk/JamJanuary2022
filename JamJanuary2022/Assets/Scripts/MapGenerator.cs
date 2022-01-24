@@ -60,9 +60,7 @@ public class MapGenerator : MonoBehaviour
     //Animation Settings
     public float duration = 1.2f;
     int currentIndex = 0;
-    bool isAnimate = false;
     float startTime = 0f;
-    float runTime = 0f;
 
     #endregion
 
@@ -75,7 +73,6 @@ public class MapGenerator : MonoBehaviour
 
         if (players != null)
         {
-            Debug.Log(players);
             players = GameObject.FindGameObjectsWithTag("Player");
         }
 
@@ -374,7 +371,6 @@ public class MapGenerator : MonoBehaviour
     {
         targetVertex = originalVertices[selectedIndices[currentIndex]];
         startTime = Time.time;
-        isAnimate = true;
     }
 
     void CloneMesh()

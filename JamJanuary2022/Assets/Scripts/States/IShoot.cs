@@ -6,11 +6,6 @@ public class IShoot : IState
 {
     AISimpleController owner;
     Weapon weapon;
-
-    float shootCD = 0.5f;
-    float reloadCD = 2f;
-
-    const int MAXBULLETS = 3;
     int bullets = 3;
 
     float currentTimer = 0f;

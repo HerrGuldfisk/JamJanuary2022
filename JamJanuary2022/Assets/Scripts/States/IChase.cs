@@ -67,7 +67,7 @@ public class IChase : IState
 
                 if(Vector3.Distance(owner.transform.position, PlayerPosition.position) < 7f)
                 {
-                    Debug.Log("Enter hover");
+                    //Debug.Log("Enter hover");
                     owner.stateMachine.ChangeState(owner.state[AISimpleController.AIStates.HOVER]);
                 }
             }
